@@ -17,10 +17,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Isay aise likhein taake ye root se seedha public_html mein jaye
-          server-dir: /public_html/
+          # Line delete kar dein ya ./ rehne dein
+          server-dir: ./
           protocol: ftp
           port: 21
           local-dir: ./
-          # Yeh line Hostinger ke purane servers ke liye zaroori hai
-          state-name: .ftp-deploy-sync-state.json
