@@ -549,6 +549,11 @@ html:not(.blessins-launch-skip) .blessins-launch__reg {
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 }
 
+/* Intro copy + Includes: never hide behind GSAP (orbit column overlap handled via intro z-index) */
+#slide-01 .slide-logo-studio__body {
+  opacity: 1;
+}
+
 #slide-01.slide-panel.slide-panel--split {
   justify-content: flex-start;
   perspective: 1500px;
@@ -1173,6 +1178,8 @@ html:not(.blessins-launch-skip) .blessins-launch__reg {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+  scroll-margin-bottom: 2rem;
 }
 
 #slide-01 .manifesto--slide01 .manifesto__inner {

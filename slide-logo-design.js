@@ -345,6 +345,10 @@
 
     const tl = g.timeline();
 
+    if (bodyEl) {
+      g.set(bodyEl, { opacity: 1, clearProps: "transform" });
+    }
+
     if (bg) {
       tl.from(
         bg,
@@ -409,20 +413,7 @@
       );
     }
 
-    if (bodyEl) {
-      tl.from(
-        bodyEl,
-        {
-          duration: 0.72,
-          opacity: 0,
-          z: -40,
-          rotationX: 12,
-          ease: "power2.out",
-          transformOrigin: "50% 0%",
-        },
-        "-=0.42"
-      );
-    }
+    /* Body copy + Includes list: keep visible (no opacity tween — was read as “missing” on slow/strict IO) */
 
     /* Orbit: CSS sets each tile’s 3D ring transform — do not tween z/rotate here or GSAP overrides it */
     if (useOrbit) {
@@ -459,14 +450,9 @@
 
   function slideIsMeaningfullyVisible() {
     const r = slide.getBoundingClientRect();
-    if (r.width < 8 || r.height < 8) return false;
-    const pad = 24;
-    return (
-      r.bottom > pad &&
-      r.top < window.innerHeight - pad &&
-      r.right > pad &&
-      r.left < window.innerWidth - pad
-    );
+    if (r.width < 8) return false;
+    /* Lenient: tall slide-01 + curtain scroll — top may be off-screen while user is in the section */
+    return r.bottom > 0 && r.top < window.innerHeight && r.right > 0 && r.left < window.innerWidth;
   }
 
   let io;
@@ -509,5 +495,8 @@
   } else {
     tryStartEntrance();
     window.setTimeout(tryStartEntrance, 1200);
+    window.setTimeout(function () {
+      if (!entranceStarted) finish();
+    }, 4000);
   }
 })();
