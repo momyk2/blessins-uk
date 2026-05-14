@@ -17,7 +17,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./public_html/
+          # Isay aise likhein taake ye root se seedha public_html mein jaye
+          server-dir: /public_html/
           protocol: ftp
           port: 21
           local-dir: ./
