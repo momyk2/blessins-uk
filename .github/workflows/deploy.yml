@@ -17,7 +17,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Isay bilkul khali chor dein, action khud hi default folder use karega
+          # Isay bilkul khali chorna hai
+          server-dir: 
           protocol: ftp
           port: 21
           local-dir: ./
