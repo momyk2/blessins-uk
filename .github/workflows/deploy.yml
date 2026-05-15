@@ -17,8 +17,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Hostinger default path fix: Isay bilkul khali chor dein
-          server-dir: 
+          # Hostinger ke liye ye rasta 100% kaam karega
+          server-dir: /public_html/
           protocol: ftp
           port: 21
           local-dir: ./
